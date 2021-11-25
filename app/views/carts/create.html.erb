@@ -1,0 +1,20 @@
+
+      
+<h2>Create new Subject</h2>
+
+    <%= @product.name %>
+
+<%= number_to_currency(@product.price) %>
+
+
+   
+
+<%= form_for :cart, url: carts_path do |f| %>
+
+    <%= f.label :Quantity %>
+
+    <%= f.number_field :quantity, required: true %>
+
+    <%= f.submit "Create Now!" %>
+
+<% end %>

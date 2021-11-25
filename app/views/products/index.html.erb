@@ -1,0 +1,32 @@
+<br /><br /><br />
+
+<h2>All Products</h2>
+
+<br />
+
+<%= link_to "New product", new_product_path %>
+
+<h3>Import Companies</h3>
+<%= form_tag import_products_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload" %>
+<% end %>
+
+<br />
+
+<br />
+
+<% @products.each do |product| %>
+  <p>Name: <%= product.name %>; unit price of <%= number_to_currency(product.price) %></p>
+  <p>
+    <%= link_to "Edit", edit_product_path(product) %> |
+    <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
+  
+    <%= form_for(@cart) do |f| %>
+      <%= hidden_field_tag :product_id, product.id %>
+      <%= hidden_field_tag :quantity, 1 %>
+      <%= f.submit %>
+  <% end %>
+    
+  </p>
+<% end%>
