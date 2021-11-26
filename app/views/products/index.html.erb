@@ -6,7 +6,7 @@
 
 <%= link_to "New product", new_product_path %>
 
-<h3>Import Companies</h3>
+<h3>Import Products</h3>
 <%= form_tag import_products_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Upload" %>
